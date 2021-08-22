@@ -1,0 +1,48 @@
+.mobile-header{
+    background-color: #13151B;
+    height: 60px;
+    display: flex;
+    position: sticky;
+    top:0;
+    align-items: center;
+    padding: 2px;
+}
+
+@media(min-width:800px){
+    .mobile-header{
+        display: none;
+    }
+}
+
+.hamburger{
+    justify-self: flex-end;
+    margin-left:auto;
+    color: white;
+    font-size: 2.5rem;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.mobile-logo{
+    width: 100px;
+    margin-top: 5px;
+}
+
+.dropdown-menu{
+    background-color: rgba(73, 73, 73, 0.925);
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    padding: 5px 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links{
+    color:white;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 0.9rem;
+}

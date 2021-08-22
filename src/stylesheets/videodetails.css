@@ -1,0 +1,13 @@
+.video-main{
+    align-items: center;
+    margin: auto;
+    padding: 2rem 3rem;
+    color: white;
+}
+
+
+@media (max-width:800px) {
+    .video-main{
+        padding: 10px;
+    }
+}
