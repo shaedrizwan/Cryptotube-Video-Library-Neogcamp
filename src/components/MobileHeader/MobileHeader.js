@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import "./MobileHeader.css"
 import logo from '../../logo.png'
 import MenuIcon from '@material-ui/icons/Menu';
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 function MobileHeader() {
     const [dropdownToggle,setDropdownToggle] = useState(false)
     return (
         <div className="mobile-header">
-            <img src={logo} className="mobile-logo" alt="Cryptotube"/>
+            <Link to="/"><img src={logo} className="mobile-logo" alt="Cryptotube"/></Link>
             <MenuIcon onClick={()=>setDropdownToggle(toggle=>!toggle)} className="hamburger"/>
             {dropdownToggle && 
                 <div className="dropdown-menu">
