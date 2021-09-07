@@ -30,7 +30,7 @@ function SearchBar() {
                 {searchText.length !== 0 ? <CloseIcon className="search-icons" onClick={ClearSearch} />:<SearchIcon className="search-icons"/>}
             </div>
             { searchOutput.length !== 0 && searchText.length !==0 && <div className="search-output">
-                {searchOutput.slice(0.10).map(video => <Link className="search-items" to={`/video/${video.slug}`}>{video.title}</Link>)}
+                {searchOutput.slice(0.10).map(video => <Link key={video._id} className="search-items" to={`/video/${video.slug}`}>{video.title}</Link>)}
             </div>}
         </div>
     )

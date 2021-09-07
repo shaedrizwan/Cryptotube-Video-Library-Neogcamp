@@ -50,3 +50,14 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+@media(max-width:800px){
+    .search-input{
+        width: 80%;
+    }
+
+    .search-output{
+        width: 75%;
+        top: 9.5rem;
+    }
+}
