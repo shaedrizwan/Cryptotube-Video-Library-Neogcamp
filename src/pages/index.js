@@ -9,4 +9,4 @@ import VideoDetails from "./VideoDetails";
 import WatchLater from "./WatchLater";
 import History from "./History"
 
-export {Home, NoMatch, LikedVideos, Login, Playlist, PlaylistVideos, Register, VideoDetails, WatchLater, History}
+export {Home, NoMatch, LikedVideos, Login, Playlist, Register, VideoDetails, WatchLater, History, PlaylistVideos}
