@@ -17,16 +17,6 @@ function VideoPlayer({video}) {
     const {token} = useAuth();
     const navigate = useNavigate()
 
-    // useEffect(()=>{
-    //     (async function (){
-            // const response = await axios.get('https://cryptotube-backend.herokuapp.com/user/playlist',{
-            //     headers:{
-            //         Authorization:token
-            //     }
-            // })
-            // setPlaylist(response.data.playlist)
-    //     })()
-    // },[token])
     useEffect(()=>{
         if(token){
             (
