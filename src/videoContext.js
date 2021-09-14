@@ -29,7 +29,7 @@ export function VideoProvider({children}){
     const [videosDB,setVideosDB] = useState([])
     useEffect(()=>{
         (async function(){
-            const {data} = await axios.get('https://cryptotube-backend.herokuapp.com/video');
+            const {data} = await axios.get('https://cryptotube-library.herokuapp.com/video');
             setVideosDB(data.videos)
         })()
     },[])

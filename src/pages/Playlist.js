@@ -12,7 +12,7 @@ export default function Playlist(){
 
     useEffect(()=>{
         (async function (){
-            const response = await axios.get('https://cryptotube-backend.herokuapp.com/user/playlist',{
+            const response = await axios.get('https://cryptotube-library.herokuapp.com/user/playlist',{
                 headers:{
                     Authorization:token
                 }

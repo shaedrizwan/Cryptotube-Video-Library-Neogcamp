@@ -24,7 +24,7 @@ export default function Register() {
             setLoader(false)
         },5000)
         try{
-            const response = await axios.post('https://cryptotube-backend.herokuapp.com/user/signup',newUser)
+            const response = await axios.post('https://cryptotube-library.herokuapp.com/user/signup',newUser)
             if(response.status === 200){
                 toast.success('Registered successfully',{
                     position:toast.POSITION.BOTTOM_RIGHT,

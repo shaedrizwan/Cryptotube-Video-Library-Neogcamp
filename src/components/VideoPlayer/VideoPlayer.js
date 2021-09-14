@@ -21,7 +21,7 @@ function VideoPlayer({video}) {
         if(token){
             (
                 async function(){
-                    const response = await axios.get('https://cryptotube-backend.herokuapp.com/user/playlist',{
+                    const response = await axios.get('https://cryptotube-library.herokuapp.com/user/playlist',{
                         headers:{
                             Authorization:token
                         }
@@ -35,7 +35,7 @@ function VideoPlayer({video}) {
 
     const updateVideoList = async(id,type) =>{
         try{
-            const response = await axios.post(`https://cryptotube-backend.herokuapp.com/user/addTo${type}`,{
+            const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/addTo${type}`,{
                 videoId:id
             },{
             headers:{
@@ -56,7 +56,7 @@ function VideoPlayer({video}) {
 
     const addToPlaylist = async (list,videoId) =>{
         setPlaylistPopup(false)
-        const response = await axios.post(`https://cryptotube-backend.herokuapp.com/user/addToPlaylist`,{
+        const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/addToPlaylist`,{
             playlist:list,
             videoId:videoId
         },{

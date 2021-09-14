@@ -14,7 +14,7 @@ export default function LikedVideos(){
 
     useEffect(()=>{
         (async function (){
-            const response = await axios.get('https://cryptotube-backend.herokuapp.com/user/likedvideos',{
+            const response = await axios.get('https://cryptotube-library.herokuapp.com/user/likedvideos',{
                 headers:{
                     Authorization:token
                 }
@@ -25,7 +25,7 @@ export default function LikedVideos(){
 
     const RemoveFromLikedvideos = async (id) =>{
         try{
-            const response = await axios.post('https://cryptotube-backend.herokuapp.com/user/removeFromLikedvideos',{
+            const response = await axios.post('https://cryptotube-library.herokuapp.com/user/removeFromLikedvideos',{
                 videoId: id
             },{
                 headers:{

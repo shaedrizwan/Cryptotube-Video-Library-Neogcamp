@@ -16,7 +16,7 @@ export default function WatchLater(){
 
     useEffect(()=>{
         (async function (){
-            const response = await axios.get('https://cryptotube-backend.herokuapp.com/user/watchlater',{
+            const response = await axios.get('https://cryptotube-library.herokuapp.com/user/watchlater',{
                 headers:{
                     Authorization:token
                 }
@@ -28,7 +28,7 @@ export default function WatchLater(){
 
     const RemoveFromWatchlater = async (id) =>{
         try{
-            const response = await axios.post('https://cryptotube-backend.herokuapp.com/user/removeFromWatchlater',{
+            const response = await axios.post('https://cryptotube-library.herokuapp.com/user/removeFromWatchlater',{
                 videoId: id
             },{
                 headers:{

@@ -14,7 +14,7 @@ function PlaylistList({item,list,setPlaylist}) {
             position:toast.POSITION.BOTTOM_RIGHT,
             autoClose: 3000
         })
-        const response = await axios.post('https://cryptotube-backend.herokuapp.com/user/removePlaylist',{
+        const response = await axios.post('https://cryptotube-library.herokuapp.com/user/removePlaylist',{
             playlistName:playlistName
         },{
             headers:{

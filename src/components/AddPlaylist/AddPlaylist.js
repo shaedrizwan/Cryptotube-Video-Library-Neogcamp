@@ -15,7 +15,7 @@ function AddPlaylist({list,setPlaylist}) {
             position:toast.POSITION.BOTTOM_RIGHT,
             autoClose: 3000
         })
-        const response = await axios.post('https://cryptotube-backend.herokuapp.com/user/createPlaylist',{
+        const response = await axios.post('https://cryptotube-library.herokuapp.com/user/createPlaylist',{
             playlistName:newPlaylist
         },{
             headers:{

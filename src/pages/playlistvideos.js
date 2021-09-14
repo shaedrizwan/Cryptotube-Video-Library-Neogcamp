@@ -15,7 +15,7 @@ export default function PlaylistVideos(){
     
     useEffect(()=>{
         (async function (){
-            const response = await axios.get('https://cryptotube-backend.herokuapp.com/user/playlist',{
+            const response = await axios.get('https://cryptotube-library.herokuapp.com/user/playlist',{
                 headers:{
                     Authorization:token
                 }
@@ -34,7 +34,7 @@ export default function PlaylistVideos(){
             position:toast.POSITION.BOTTOM_RIGHT,
             autoClose: 3000
         })
-        const response = await axios.post('https://cryptotube-backend.herokuapp.com/user/removeFromPlaylist',{
+        const response = await axios.post('https://cryptotube-library.herokuapp.com/user/removeFromPlaylist',{
             playlistName:pName,
             videoId: id
         },{
