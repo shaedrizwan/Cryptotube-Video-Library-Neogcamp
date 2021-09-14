@@ -3,7 +3,7 @@ import { useAuth } from "../authContext"
 import { SemipolarLoading } from 'react-loadingg';
 import { useState } from "react";
 
-export function Login(){
+export default function Login(){
     const {login,loginHandler,logoutHandler} = useAuth();
     const [loader,setLoader] = useState(false)
     let username,password;

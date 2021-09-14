@@ -6,7 +6,7 @@ import axios from "axios";
 import { SemipolarLoading } from 'react-loadingg';
 import { VideoList } from "../components";
 
-export function LikedVideos(){
+export default function LikedVideos(){
 
     const {token} = useAuth();
 

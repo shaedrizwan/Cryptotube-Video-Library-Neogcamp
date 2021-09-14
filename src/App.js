@@ -1,17 +1,17 @@
 import './App.css';
 import {Routes, Route, Navigate} from "react-router-dom";
-import {Home} from "./pages/Home";
-import {VideoDetails} from "./pages/VideoDetails";
-import {History} from "./pages/History";
-import {LikedVideos} from "./pages/LikedVideos";
-import {Playlist} from "./pages/Playlist";
-import {WatchLater} from "./pages/WatchLater";
+import {Home} from "./pages";
+import {VideoDetails} from "./pages";
+import {History} from "./pages";
+import {LikedVideos} from "./pages";
+import {Playlist} from "./pages";
+import {WatchLater} from "./pages";
 import {NavAside} from "./nav";
-import {Login} from "./pages/Login";
-import {NoMatch} from "./pages/404";
+import {Login} from "./pages";
+import {NoMatch} from "./pages";
 import { useAuth } from './authContext';
-import {PlaylistVideos} from "./pages/playlistvideos"
-import Register from './pages/Register';
+import {PlaylistVideos} from "./pages"
+import {Register} from './pages';
 import { MobileHeader } from './components';
 
 function App() {

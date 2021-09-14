@@ -3,7 +3,7 @@ import {useVideo} from "../videoContext";
 import { CommonLoading } from 'react-loadingg';
 import { SearchBar, VideoList } from "../components";
 
-export function Home(){
+export default function Home(){
     const {dispatchHistory,videosDB} = useVideo();
     return(
         <>

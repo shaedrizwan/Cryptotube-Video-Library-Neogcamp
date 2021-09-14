@@ -9,7 +9,7 @@ import {VideoList} from "../components"
 
 toast.configure()
 
-export function WatchLater(){
+export default function WatchLater(){
     const {token} = useAuth();
 
     const [watchlater,setWatchlater] = useState()

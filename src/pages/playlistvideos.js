@@ -7,7 +7,7 @@ import { VideoList } from "../components"
 import {SemipolarLoading} from "react-loadingg"
 import { toast } from "react-toastify"
 
-export  function PlaylistVideos(){
+export default function PlaylistVideos(){
     const {name} = useParams()
     const pName = decodeURI(name)
     const {token} = useAuth()

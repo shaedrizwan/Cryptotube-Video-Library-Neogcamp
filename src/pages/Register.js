@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import {toast} from "react-toastify"
 
-function Register() {
+export default function Register() {
 
     const [loader,setLoader] = useState(false)
     const [error,setError] = useState('')
@@ -61,5 +61,3 @@ function Register() {
     </div>
     )
 }
-
-export default Register

@@ -8,7 +8,7 @@ import {SemipolarLoading} from "react-loadingg"
 
 toast.configure()
 
-export function VideoDetails(){
+export default function VideoDetails(){
     const {slug} = useParams();
     const {videosDB} = useVideo();
     const video = videosDB.find(vid=>vid.slug === slug);

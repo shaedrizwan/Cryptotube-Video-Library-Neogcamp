@@ -6,7 +6,7 @@ import "../stylesheets/playlist.css"
 import { SemipolarLoading } from "react-loadingg";
 import{ AddPlaylist, PlaylistList} from "../components"
 
-export function Playlist(){
+export default function Playlist(){
     const {token} = useAuth()
     const [list,setPlaylist] = useState();
 

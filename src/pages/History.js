@@ -2,7 +2,7 @@ import {useVideo} from "../videoContext";
 import "../stylesheets/history.css";
 import { VideoList } from "../components";
 
-export function History(){
+export default function History(){
     const {state} = useVideo();
     const {dispatchHistory} = useVideo();
     return(
