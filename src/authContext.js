@@ -1,6 +1,7 @@
 import axios from "axios";
 import {createContext,useContext, useEffect, useState} from "react";
 import { useLocation,useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const authContext = createContext();
 
@@ -47,6 +48,10 @@ export function AuthProvider({children}){
             try{
                 const response = await axios.post("https://cryptotube-library.herokuapp.com/user/login",{username,password})
                 if(response.status === 200){
+                    toast.dark("Logged in successfully!",{
+                        position: toast.POSITION.BOTTOM_RIGHT,
+                        autoClose: 3000
+                    })
                     setLogin(true)
                     setToken(response.data.token)
                     localStorage?.setItem("login",JSON.stringify({isLogged:true,token:response.data.token}))
@@ -54,7 +59,10 @@ export function AuthProvider({children}){
                 }
             }
             catch{
-                console.log("Invalid Username/Password")
+                toast.error(`Login failed! Invalid Username/Password`,{
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 3000
+                })
             }
         }
 

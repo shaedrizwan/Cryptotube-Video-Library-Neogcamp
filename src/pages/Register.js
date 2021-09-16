@@ -43,7 +43,7 @@ export default function Register() {
     return (
     <div className="register">
         <div className="register-card">
-            <div className="register-title">register</div>
+            <div className="register-title">Register</div>
             <div className="register-label">First Name</div>
             <input className="register-input" onChange={e => newUser.firstName=e.target.value} type="text"></input>
             <div className="register-label">Last Name</div>
