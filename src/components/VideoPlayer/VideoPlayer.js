@@ -104,7 +104,7 @@ function VideoPlayer({video}) {
             </div>
 
             <div className="details-container">
-                <img src="https://yt3.ggpht.com/ytc/AKedOLRKlMd8XiIOUXc9DKEjUgt5fFy1OJgYkN9tF90F4w=s68-c-k-c0x00ffffff-no-rj" alt="profile" className="channel-thumbnail" />
+                <img src={video.channel_thumbnail} alt="profile" className="channel-thumbnail" />
                 <div className="details-container-right">
                     <div className="details-channel">{video.channel_name}</div>
                     <div className="details-date">{video.published_date}</div>

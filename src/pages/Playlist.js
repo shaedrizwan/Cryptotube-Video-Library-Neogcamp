@@ -32,7 +32,7 @@ export default function Playlist(){
         <div>
             {!list && <SemipolarLoading size="large" color="yellow"/>}
             {list && list.map(item =>{
-                return <PlaylistList list={list} setPlaylist={setPlaylist} item={item}/>
+                return <PlaylistList key={item._id} list={list} setPlaylist={setPlaylist} item={item}/>
             })}
             {list && list.length === 0 && <h1 style={{color:"white",margin:"2rem"}}>No saved playlist</h1>}
         </div>
