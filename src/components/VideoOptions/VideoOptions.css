@@ -6,3 +6,12 @@
     cursor: pointer;
 }
 
+.colored{
+    color: #0e9ac9;
+    font-size: 2rem;
+}
+
+.uncolored{
+    color: white;
+    font-size: 2rem;
+}

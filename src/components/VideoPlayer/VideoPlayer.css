@@ -43,6 +43,10 @@
 .attr-items{
     padding: 1rem 0.5rem;
     justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
 }
 
 h2{
@@ -83,6 +87,16 @@ h2{
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.colored{
+    color: #0e9ac9;
+    font-size: 2rem;
+}
+
+.uncolored{
+    color: white;
+    font-size: 2rem;
 }
 
 

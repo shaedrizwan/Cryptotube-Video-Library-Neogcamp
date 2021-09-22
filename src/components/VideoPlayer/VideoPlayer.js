@@ -16,6 +16,8 @@ function VideoPlayer({video}) {
     const [playlist,setPlaylist] = useState({})
     const {token} = useAuth();
     const navigate = useNavigate()
+    const [isLiked,setIsLiked] = useState(false)
+    const [isAddedToWatchlater,setIsAddedToWatchlater] = useState(false)
 
     useEffect(()=>{
         if(token){
@@ -32,6 +34,40 @@ function VideoPlayer({video}) {
         }
     },[token])
 
+    useState(()=>{
+        (
+            async function(){
+                const response = await axios.post("https://cryptotube-library.herokuapp.com/user/isLiked",{
+                videoId:video._id
+                },{
+                    headers:{
+                        authorization:token
+                    }
+                })
+                if(response.status === 200){
+                    setIsLiked(response.data.isLiked)
+                }
+            }
+        )()
+    },[])
+
+    useState(()=>{
+        (
+            async function(){
+                const response = await axios.post("https://cryptotube-library.herokuapp.com/user/isAddedToWatchlater",{
+                videoId:video._id
+                },{
+                    headers:{
+                        authorization:token
+                    }
+                })
+                if(response.status === 200){
+                    setIsAddedToWatchlater(response.data.isAddedToWatchlater)
+                }
+            }
+        )()
+    },[])
+
 
     const updateVideoList = async(id,type) =>{
         try{
@@ -46,6 +82,12 @@ function VideoPlayer({video}) {
                 toast.success(`Video successfully added to ${type}!!`,{
                     position:toast.POSITION.BOTTOM_RIGHT
                 })
+                if(type === "Likedvideos"){
+                    setIsLiked(true)
+                }
+                if(type === "Watchlater"){
+                    setIsAddedToWatchlater(true)
+                }
             }
         }catch{
             toast.error(`Failed to add video to ${type}!`,{
@@ -86,7 +128,8 @@ function VideoPlayer({video}) {
         
             <div className="attr-container">
                 <div onClick={()=>updateVideoList(video._id,"Likedvideos")} className="attr-items">
-                    <VideoOptions Icon={ThumbUpAltIcon} title="Like"/>
+                    <ThumbUpAltIcon className={isLiked?"colored":"uncolored"}/>
+                    <div className="nav-title">Like</div>
                 </div>
                 <div onClick={()=>setPlaylistPopup(toggle => !toggle)} className="attr-items">
                 <VideoOptions Icon={PlaylistAddIcon} title="Playlist"/>
@@ -99,7 +142,8 @@ function VideoPlayer({video}) {
                     {token && playlist.length === 0 && <div className={{color:"white"}}>No playlist present</div>}
                 </div>}
                 <div onClick={()=>updateVideoList(video._id,"Watchlater")} className="attr-items">
-                <VideoOptions Icon={WatchLaterIcon} title="Watchlater"/>
+                    <WatchLaterIcon className={isAddedToWatchlater?"colored":"uncolored"}/>
+                    <div className="nav-title">Watchlater</div>
                 </div>
             </div>
 
