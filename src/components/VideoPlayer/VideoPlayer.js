@@ -2,7 +2,6 @@ import React,{useState, useEffect} from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import "./VideoPlayer.css"
-import VideoOptions from "../VideoOptions/VideoOptions"
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
@@ -132,7 +131,8 @@ function VideoPlayer({video}) {
                     <div className="nav-title">Like</div>
                 </div>
                 <div onClick={()=>setPlaylistPopup(toggle => !toggle)} className="attr-items">
-                <VideoOptions Icon={PlaylistAddIcon} title="Playlist"/>
+                    <PlaylistAddIcon className="uncolored"/>
+                    <div className="nav-title">Playlist</div>
                 </div>
                 {playlistPopup && <div className="playlist-popup">
                     {!token && navigate('/login')}
