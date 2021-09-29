@@ -49,3 +49,7 @@
 .login-button:hover{
     background-color: rgb(243, 202, 126);   
 }
+
+.login-reg{
+    color: white;
+}
