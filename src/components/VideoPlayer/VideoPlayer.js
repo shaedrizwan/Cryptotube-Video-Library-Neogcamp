@@ -34,38 +34,42 @@ function VideoPlayer({video}) {
     },[token])
 
     useState(()=>{
-        (
-            async function(){
-                const response = await axios.post("https://cryptotube-library.herokuapp.com/user/isLiked",{
-                videoId:video._id
-                },{
-                    headers:{
-                        authorization:token
+        if(token){
+            (
+                async function(){
+                    const response = await axios.post("https://cryptotube-library.herokuapp.com/user/isLiked",{
+                    videoId:video._id
+                    },{
+                        headers:{
+                            authorization:token
+                        }
+                    })
+                    if(response.status === 200){
+                        setIsLiked(response.data.isLiked)
                     }
-                })
-                if(response.status === 200){
-                    setIsLiked(response.data.isLiked)
                 }
-            }
-        )()
-    },[])
+            )()
+        }
+    },[token])
 
     useState(()=>{
-        (
-            async function(){
-                const response = await axios.post("https://cryptotube-library.herokuapp.com/user/isAddedToWatchlater",{
-                videoId:video._id
-                },{
-                    headers:{
-                        authorization:token
+        if(token){
+            (
+                async function(){
+                    const response = await axios.post("https://cryptotube-library.herokuapp.com/user/isAddedToWatchlater",{
+                    videoId:video._id
+                    },{
+                        headers:{
+                            authorization:token
+                        }
+                    })
+                    if(response.status === 200){
+                        setIsAddedToWatchlater(response.data.isAddedToWatchlater)
                     }
-                })
-                if(response.status === 200){
-                    setIsAddedToWatchlater(response.data.isAddedToWatchlater)
                 }
-            }
-        )()
-    },[])
+            )()
+        }
+    },[token])
 
 
     const updateVideoList = async(id,type) =>{
@@ -116,7 +120,7 @@ function VideoPlayer({video}) {
 
     return (
         <div>
-            <iframe src={video.youtube_url}
+            <iframe src={`${video.youtube_url}?autoplay=1`}
                 className="video-iframe"
                 frameBorder='0'
                 allow='autoplay; encrypted-media'
