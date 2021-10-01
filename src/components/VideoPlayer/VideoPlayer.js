@@ -72,38 +72,99 @@ function VideoPlayer({video}) {
     },[token])
 
 
-    const updateVideoList = async(id,type) =>{
-        try{
-            const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/addTo${type}`,{
-                videoId:id
-            },{
-            headers:{
-                Authorization:token
-            }
-            })
-            if(response.status === 200){
-                toast.success(`Video successfully added to ${type}!!`,{
-                    position:toast.POSITION.BOTTOM_RIGHT
+    const likeButtonPressed = async(id) =>{
+        if(!isLiked){
+            try{
+                const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/addToLikedvideos`,{
+                    videoId:id
+                },{
+                headers:{
+                    Authorization:token
+                }
                 })
-                if(type === "Likedvideos"){
+                if(response.status === 200){
+                    toast.success(`Video successfully added to Liked Videos!!`,{
+                        position:toast.POSITION.BOTTOM_RIGHT
+                    })
                     setIsLiked(true)
                 }
-                if(type === "Watchlater"){
-                    setIsAddedToWatchlater(true)
-                }
+            }catch{
+                toast.error(`Failed to add video to Liked Videos!`,{
+                    position:toast.POSITION.BOTTOM_RIGHT
+                })
             }
-        }catch{
-            toast.error(`Failed to add video to ${type}!`,{
-                position:toast.POSITION.BOTTOM_RIGHT
-            })
+        }else{
+            try{
+                const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/removeFromLikedvideos`,{
+                    videoId:id
+                },{
+                headers:{
+                    Authorization:token
+                }
+                })
+                if(response.status === 200){
+                    toast.success(`Video successfully removed from Liked Videos!!`,{
+                        position:toast.POSITION.BOTTOM_RIGHT
+                    })
+                    setIsLiked(false)
+                }
+            }catch{
+                toast.error(`Failed to remove video from Liked Videos!`,{
+                    position:toast.POSITION.BOTTOM_RIGHT
+                })
+            }
         }
     }
 
-    const addToPlaylist = async (list,videoId) =>{
+    const watchlaterButtonPressed = async(id) =>{
+        if(!isAddedToWatchlater){
+            try{
+                const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/addToWatchlater`,{
+                    videoId:id
+                },{
+                headers:{
+                    Authorization:token
+                }
+                })
+                if(response.status === 200){
+                    toast.success(`Video successfully added to Watch Later!!`,{
+                        position:toast.POSITION.BOTTOM_RIGHT
+                    })
+                    setIsAddedToWatchlater(true)
+                }
+            }catch{
+                toast.error(`Failed to add video to Watch Later!`,{
+                    position:toast.POSITION.BOTTOM_RIGHT
+                })
+            }
+        }else{
+            try{
+                const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/removeFromWatchlater`,{
+                    videoId:id
+                },{
+                headers:{
+                    Authorization:token
+                }
+                })
+                if(response.status === 200){
+                    toast.success(`Video successfully removed from Watch Later!!`,{
+                        position:toast.POSITION.BOTTOM_RIGHT
+                    })
+                    setIsAddedToWatchlater(false)
+                }
+            }catch{
+                toast.error(`Failed to remove video from Watch Later!`,{
+                    position:toast.POSITION.BOTTOM_RIGHT
+                })
+            }
+        }
+    }
+
+    const addToPlaylist = async (list,video) =>{
         setPlaylistPopup(false)
         const response = await axios.post(`https://cryptotube-library.herokuapp.com/user/addToPlaylist`,{
             playlist:list,
-            videoId:videoId
+            videoId:video._id
         },{
         headers:{
             Authorization:token
@@ -114,6 +175,28 @@ function VideoPlayer({video}) {
                 position:toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 3000
             })
+        setPlaylist(playlist.map(item => item.playlistName === list? {...item,videos:[...item.videos,video]}:item ))
+        }
+    }
+
+    const removeFromPlaylist = async (list,video) =>{
+        setPlaylistPopup(false)
+        console.log(list)
+        console.log(video)
+        const response = await axios.post('https://cryptotube-library.herokuapp.com/user/removeFromPlaylist',{
+            playlistName:list,
+            videoId: video._id
+        },{
+            headers:{
+                Authorization:token
+            }
+        })
+        if(response.status === 200){
+            toast.success(`Video successfully removed to ${list}`,{
+                position:toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 3000
+            })
+        setPlaylist(playlist.map(item => item.playlistName === list? {...item,videos:item.videos.filter(vid => vid._id !== video._id)}:item ))
         }
     }
 
@@ -130,7 +213,7 @@ function VideoPlayer({video}) {
             <div className="title">{video.title}</div>
         
             <div className="attr-container">
-                <div onClick={()=>updateVideoList(video._id,"Likedvideos")} className="attr-items">
+                <div onClick={()=>likeButtonPressed(video._id)} className="attr-items">
                     <ThumbUpAltIcon className={isLiked?"colored":"uncolored"}/>
                     <div className="nav-title">Like</div>
                 </div>
@@ -141,11 +224,11 @@ function VideoPlayer({video}) {
                 {playlistPopup && <div className="playlist-popup">
                     {!token && navigate('/login')}
                     {token && playlist.length !== 0 && playlist.map((list)=>{
-                        return <div onClick={()=>addToPlaylist(list.playlistName,video._id)} key={list._id} className="playlist-popup-items">{list.playlistName}</div>
+                        return <div onClick={()=>list.videos.find(vid => vid._id === video._id)?removeFromPlaylist(list.playlistName,video):addToPlaylist(list.playlistName,video)} key={list._id} className={list.videos.find(vid => vid._id === video._id)?"present-playlist-popup-items":"playlist-popup-items"}>{list.playlistName}</div>
                     })}
                     {token && playlist.length === 0 && <div className={{color:"white"}}>No playlist present</div>}
                 </div>}
-                <div onClick={()=>updateVideoList(video._id,"Watchlater")} className="attr-items">
+                <div onClick={()=>watchlaterButtonPressed(video._id)} className="attr-items">
                     <WatchLaterIcon className={isAddedToWatchlater?"colored":"uncolored"}/>
                     <div className="nav-title">Watchlater</div>
                 </div>

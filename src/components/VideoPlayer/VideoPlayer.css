@@ -30,6 +30,16 @@
     font-size: 0.9rem;
 }
 
+.present-playlist-popup-items{
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(128, 128, 128, 0.486);
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: rgb(114, 98, 114);
+}
+
 .playlist-popup-items:hover{
     background-color: rgb(114, 98, 114);
 }
@@ -58,8 +68,6 @@ h2{
     height: 450px;
 }
 
-@media (max-width:800px) {
-}
 
 .details-container{
     display: flex;
