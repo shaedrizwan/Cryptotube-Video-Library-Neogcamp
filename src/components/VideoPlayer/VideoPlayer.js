@@ -5,8 +5,9 @@ import "./VideoPlayer.css"
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import {useAuth} from "../../authContext"
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import { useNavigate } from 'react-router-dom'
+import {useAuth} from "../../authContext"
 
 
 function VideoPlayer({video}) {
@@ -224,7 +225,7 @@ function VideoPlayer({video}) {
                 {playlistPopup && <div className="playlist-popup">
                     {!token && navigate('/login')}
                     {token && playlist.length !== 0 && playlist.map((list)=>{
-                        return <div onClick={()=>list.videos.find(vid => vid._id === video._id)?removeFromPlaylist(list.playlistName,video):addToPlaylist(list.playlistName,video)} key={list._id} className={list.videos.find(vid => vid._id === video._id)?"present-playlist-popup-items":"playlist-popup-items"}>{list.playlistName}</div>
+                        return <div onClick={()=>list.videos.find(vid => vid._id === video._id)?removeFromPlaylist(list.playlistName,video):addToPlaylist(list.playlistName,video)} key={list._id} className={list.videos.find(vid => vid._id === video._id)?"present-playlist-popup-items":"playlist-popup-items"}>{list.playlistName}{list.videos.find(vid => vid._id === video._id)? <PlaylistAddCheckIcon className="playlist-icon"/> : <PlaylistAddIcon className="playlist-icon"/>} </div>
                     })}
                     {token && playlist.length === 0 && <div className={{color:"white"}}>No playlist present</div>}
                 </div>}

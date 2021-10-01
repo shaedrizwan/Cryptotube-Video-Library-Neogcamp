@@ -28,6 +28,7 @@
     margin: 5px;
     border-radius: 8px;
     font-size: 0.9rem;
+    display: flex;
 }
 
 .present-playlist-popup-items{
@@ -38,6 +39,13 @@
     border-radius: 8px;
     font-size: 0.9rem;
     background-color: rgb(114, 98, 114);
+    display: flex;
+}
+
+.playlist-icon{
+    font-size: small;
+    justify-self: flex-end;
+    margin-left: auto;
 }
 
 .playlist-popup-items:hover{
