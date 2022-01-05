@@ -1,0 +1,41 @@
+.playlist-card{
+    background-color: #141b13;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 50%;
+}
+
+.playlist-link{
+    text-decoration: none;
+    color: white;
+}
+
+.playlist-name{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0.5rem 0rem;
+}
+
+.playlist-total-videos{
+    font-size: 0.8rem;
+}
+
+.clear-button{
+    padding: 10px 25px;
+    margin: 1.5rem 0rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: wheat;
+}
+
+.clear-button:hover{
+    background-color: rgb(243, 202, 126);   
+}
+
+@media(max-width:800px){
+    .playlist-card{
+        max-width: 90%;
+    }
+}

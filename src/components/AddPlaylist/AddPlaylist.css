@@ -1,0 +1,24 @@
+.new-playlist-title{
+    color:white;
+    padding-bottom: 10px;
+}
+
+.new-playlist-input{
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    display: block;
+}
+
+.new-playlist-button{
+    padding: 0.5rem 1.5rem;
+    margin: 1rem 0rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: wheat;
+}
+
+.new-playlist-button:hover{
+    background-color: rgb(243, 202, 126);   
+}
